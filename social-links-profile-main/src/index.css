@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700');
+
+:root {
+  --green: hsl(75, 94%, 57%);
+  --white: hsl(0, 0%, 100%);
+  --grey: hsl(0, 0%, 20%);
+  --dark-grey: hsl(0, 0%, 12%);
+  --off-black: hsl(0, 0%, 8%);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+body {
+  font-family: 'inter', sans-serif;
+  background-color: var(--off-black);
+  color: var(--white);
+  height: 100vh;
+  display: grid;
+  place-items: center;
+}
+
+a {
+  display: inline-block;
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+.container {
+  position: relative;
+}
+
+/* Profile container */
+.profile-container {
+  background-color: var(--dark-grey);
+  text-align: center;
+  padding: 2rem;
+  border-radius: 1rem;
+  margin-block: 3rem;
+}
+
+.profile-container img {
+  width: 100px;
+  height: 100px;
+  border-radius: 100vw;
+  object-fit: cover;
+  margin-inline: auto;
+  margin-bottom: 1.5rem;
+}
+
+.profile-container .profile-info {
+  margin-bottom: 1.5rem;
+}
+
+.profile-container .profile-info h1 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.profile-container .profile-info span {
+  color: var(--green);
+}
+
+.profile-container p {
+  margin-bottom: 1.5rem;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+.button {
+  background-color: var(--grey);
+  border: none;
+  font-family: inherit;
+  width: 100%;
+  color: var(--white);
+  padding: 0.7rem 0;
+  border-radius: 0.7rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  font-weight: 700;
+  transition: all 0.2s ease;
+}
+
+.button:hover {
+  background-color: var(--green);
+  color: var(--off-black);
+}
+
+.button:not(:last-child) {
+  margin-bottom: 1rem;
+}
+
+/* Profile details */
+.profile-details {
+  background-color: var(--dark-grey);
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
+  height: 100%;
+  border-radius: 1rem;
+  padding-top: 0.5rem;
+  padding-left: 1rem;
+}
+
+.profile-details .close {
+  background-color: var(--off-black);
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  margin-bottom: 1rem;
+}
+
+.profile-details .close i {
+  font-size: 1.5rem;
+}
