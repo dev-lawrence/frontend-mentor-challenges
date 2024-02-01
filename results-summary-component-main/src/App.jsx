@@ -1,6 +1,20 @@
+import { useState, useEffect } from 'react';
 import { data } from './data.js';
+import Rocket from './assets/rocket.svg';
 
 const App = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const removeRocket = setTimeout(() => {
+      setIsVisible(true);
+    }, 2000);
+
+    return () => {
+      clearTimeout(removeRocket);
+    };
+  }, []);
+
   const summaryTitleColor = (category) => {
     const item = data.find((entry) => entry.category === category);
     return item ? item.titleColor : '';
@@ -19,16 +33,32 @@ const App = () => {
             <h1>Your Result</h1>
             <div>
               <div className="score">
-                <p>76</p>
-                <span>of 100</span>
+                <img className="rocket" src={Rocket} alt="" />
+                {isVisible && (
+                  <div
+                    className={`score-text ${
+                      isVisible ? 'score-text-animation' : ''
+                    }`}
+                  >
+                    <p>76</p>
+                    <span>of 100</span>
+                  </div>
+                )}
               </div>
             </div>
 
             <div className="text">
-              <h2>Great</h2>
-              <p>
-                You Scored higher than 65% of the people who have taken the test
-              </p>
+              {!isVisible ? (
+                <h2>Loading...</h2>
+              ) : (
+                <div className="show-grade">
+                  <h2>Great</h2>
+                  <p>
+                    You Scored higher than 65% of the people who have taken the
+                    test
+                  </p>
+                </div>
+              )}
             </div>
           </div>
           <div className="summary">

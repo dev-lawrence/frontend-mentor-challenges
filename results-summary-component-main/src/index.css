@@ -36,6 +36,7 @@ body {
   background-color: var(--neutral-white);
 }
 
+/* Result section */
 .result {
   background: linear-gradient(
     to bottom,
@@ -48,6 +49,7 @@ body {
   border-bottom-left-radius: var(--mobile);
   border-bottom-right-radius: var(--mobile);
   padding-block: 2rem;
+  width: 100%;
 }
 
 .result > *:where(:not(:first-child)) {
@@ -60,6 +62,7 @@ body {
 }
 
 .result .score {
+  position: relative;
   height: 120px;
   width: 120px;
   border-radius: 50%;
@@ -67,7 +70,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
+  overflow: hidden;
   margin-inline: auto;
   background: linear-gradient(
     to bottom,
@@ -100,6 +103,56 @@ body {
   color: var(--light-lavender);
 }
 
+.rocket {
+  position: absolute;
+  margin-right: 0;
+  width: 70px;
+  animation: rocket 2s forwards 1s;
+}
+
+@keyframes rocket {
+  0% {
+    transform: translateY(0rem);
+  }
+
+  100% {
+    transform: translateY(-10rem);
+  }
+}
+
+.score-text-animation {
+  animation: show-score 0.8s;
+}
+
+.show-grade {
+  animation: grade 0.8s;
+}
+
+@keyframes grade {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes show-score {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Summary section */
 .summary {
   padding-inline: 1rem;
   margin-top: 1rem;
@@ -223,6 +276,11 @@ button:hover {
     margin-bottom: 1rem;
   }
 
+  .rocket {
+    width: 90px;
+  }
+
+  /* Result */
   .result {
     display: flex;
     flex-direction: column;
