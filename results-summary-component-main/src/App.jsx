@@ -55,8 +55,6 @@ const App = () => {
               </div>
             ))}
 
-            <p></p>
-
             <button>Continue</button>
           </div>
         </div>

@@ -106,9 +106,9 @@ body {
 }
 
 .summary h3 {
-  margin-bottom: 1rem;
   color: var(--dark-gray-blue);
   font-weight: 700;
+  margin-bottom: 1rem;
 }
 
 .summary .summary-entry .stat,
@@ -135,7 +135,7 @@ body {
   border-radius: 0.5rem;
 }
 
-.summary .summary-entry:not(:last-child) {
+.summary .summary-entry:not(:last-of-type) {
   margin-bottom: 1rem;
 }
 
@@ -184,6 +184,7 @@ button {
   background-color: var(--dark-gray-blue);
   color: var(--neutral-white);
   margin-bottom: 3rem;
+  margin-top: 1rem;
   cursor: pointer;
   transform: 0.3s ease;
 }
@@ -218,6 +219,10 @@ button:hover {
     margin-top: 0;
   }
 
+  .summary h3 {
+    margin-bottom: 1rem;
+  }
+
   .result {
     display: flex;
     flex-direction: column;
@@ -250,5 +255,6 @@ button:hover {
 
   button {
     margin-bottom: 0;
+    margin-top: 2rem;
   }
 }
