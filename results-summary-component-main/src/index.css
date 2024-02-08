@@ -107,7 +107,7 @@ body {
   position: absolute;
   margin-right: 0;
   width: 70px;
-  animation: rocket 2s forwards 1s;
+  animation: rocket 2s forwards 1.5s;
 }
 
 @keyframes rocket {

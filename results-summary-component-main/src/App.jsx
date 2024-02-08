@@ -8,7 +8,7 @@ const App = () => {
   useEffect(() => {
     const removeRocket = setTimeout(() => {
       setIsVisible(true);
-    }, 2000);
+    }, 2500);
 
     return () => {
       clearTimeout(removeRocket);
