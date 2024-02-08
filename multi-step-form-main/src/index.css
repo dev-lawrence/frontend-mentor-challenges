@@ -40,4 +40,250 @@ li {
 
 body {
   font-family: 'Ubuntu', sans-serif;
+  background-color: var(--neutral-clr-300);
+}
+
+/* Buttons */
+
+.btn {
+  padding: 0.8rem 1.5rem;
+  cursor: pointer;
+  border-radius: 0.3rem;
+  border: 0;
+  font-family: inherit;
+  background-color: var(--accent-clr-300);
+  color: var(--neutral-clr-200);
+  font-size: 1rem;
+  transition: opacity 0.2s ease;
+}
+.btn:hover {
+  opacity: 0.9;
+}
+
+.btn.confirm {
+  background-color: var(--accent-clr-350);
+}
+
+.prev-btn {
+  background-color: transparent;
+  color: var(--neutral-clr-150);
+  transition: color 0.2s ease;
+  font-weight: 500;
+  padding-left: 0;
+}
+.prev-btn:hover {
+  color: var(--accent-clr-300);
+}
+
+.buttons {
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.next {
+  justify-content: flex-end;
+}
+
+/* Progress Bar */
+.progressbar {
+  height: 10.813rem;
+  background-image: url(../src/assets/images/bg-sidebar-mobile.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+
+.progressbar__steps {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem 1rem 0;
+}
+
+.progressbar__step-info ol {
+  text-align: center;
+  user-select: none;
+  font-size: 1.3rem;
+  margin: 0 1.063rem;
+  cursor: pointer;
+  height: 40px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: var(--neutral-clr-200);
+  border: 2px solid var(--neutral-clr-200);
+  transition: background-color 0.2s ease;
+}
+
+.progressbar__step-info ol:hover {
+  background-color: var(--accent-clr-200);
+  color: var(--accent-clr-300);
+}
+
+.progressbar__step-info ol.active {
+  background-color: var(--accent-clr-200);
+  color: var(--accent-clr-300);
+}
+.progressbar__step-text {
+  display: none;
+}
+
+/* Form container */
+.form-step {
+  background-color: var(--neutral-clr-200);
+  padding: 2.125rem 1.5rem;
+  border-radius: 0.7rem;
+  max-width: 500px;
+  margin-inline: auto;
+  margin-top: -4.5rem;
+}
+
+.form-step__title {
+  margin-bottom: 2rem;
+}
+
+.form-step__title h1 {
+  color: var(--accent-clr-300);
+  font-weight: 700;
+  margin-bottom: 0.7rem;
+  font-size: 2rem;
+}
+
+.form-step__title p {
+  color: var(--neutral-clr-150);
+}
+
+/* Step 1 */
+.step-one .input-group {
+  position: relative;
+}
+.step-one .input-group label {
+  margin-bottom: 0.4rem;
+  color: var(--accent-clr-300);
+  font-weight: 400;
+}
+.step-one .input-group input {
+  width: 100%;
+  height: 39px;
+  border-radius: 0.5rem;
+  border: 1.5px solid var(--neutral-clr-350);
+  margin-bottom: 1.313rem;
+  outline: none;
+  font-family: inherit;
+  padding-left: 1rem;
+}
+.step-one .input-group ::placeholder {
+  color: var(--neutral-clr-400);
+}
+.step-one .button {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 1rem;
+}
+.step-one .err-msg {
+  position: absolute;
+  right: 0;
+  color: var(--accent-clr-400);
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+/* Step two */
+.step-two .plans .plan {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  border: 1px solid var(--neutral-clr-350);
+  padding: 1.213rem 1rem;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.step-two .plans .plan:not(:last-child) {
+  margin-bottom: 1rem;
+}
+
+.step-two .plans .plan img {
+  margin-right: 0.9rem;
+}
+
+.step-two .plans .plan__info h4 {
+  color: var(--accent-clr-300);
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 0.3rem;
+}
+.step-two .plans .plan__info span {
+  color: var(--neutral-clr-150);
+  font-size: 0.9rem;
+  margin-bottom: 0.3rem;
+}
+
+.step-two .plans .plan__info .trial {
+  color: var(--accent-clr-300);
+}
+.step-two .plans .plan:hover {
+  border-color: var(--accent-clr-350);
+  background-color: var(--neutral-clr-300);
+}
+
+.step-two .plans .plan.active {
+  border-color: var(--accent-clr-350);
+  background-color: var(--neutral-clr-300);
+}
+
+.step-two .plans .toggle__switch {
+  user-select: none;
+}
+.step-two .plans .toggle__switch input[type='radio'] {
+  margin: 0 -2px 0 -2px;
+  opacity: 0;
+  width: 27px;
+  height: 24px;
+  cursor: pointer;
+}
+.step-two .plans .toggle__switch .toggle {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  margin: 2rem 0 0;
+  padding: 1.2rem;
+  border-radius: 0.5rem;
+  border: none;
+  background-color: var(--neutral-clr-300);
+}
+.step-two .plans .toggle__switch .toggle__wrapper {
+  position: relative;
+  height: 25px;
+  margin: 0 1.5rem;
+}
+.step-two .plans .toggle__switch .toggle__background {
+  background-color: var(--accent-clr-300);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border-radius: 24px;
+  pointer-events: none;
+}
+.step-two .plans .toggle__switch .toggle__button {
+  position: absolute;
+  left: 4px;
+  top: 3px;
+  right: 100%;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: var(--neutral-clr-300);
+  transition: all 250ms ease-in-out;
+}
+.step-two .plans .toggle__switch #year:checked ~ .toggle__button {
+  left: 25px;
 }
