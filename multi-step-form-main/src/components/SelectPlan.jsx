@@ -5,8 +5,7 @@ import Header from './Header';
 import Footer from './Footer';
 import { useState } from 'react';
 
-const SelectPlan = ({ page, setPage }) => {
-  const [option, setOption] = useState('monthly');
+const SelectPlan = ({ page, setPage, option, setOption }) => {
   const [selectedIndex, setSelectedIndex] = useState();
 
   const plans = [
@@ -77,7 +76,12 @@ const SelectPlan = ({ page, setPage }) => {
             aria-label="price-toggle"
             role="radiogroup"
           >
-            <label htmlFor="month">Monthly </label>
+            <label
+              htmlFor="month"
+              className={`${option === 'yearly' ? 'fade' : ''}`}
+            >
+              Monthly
+            </label>
 
             <div className="toggle__wrapper">
               <input
@@ -98,7 +102,12 @@ const SelectPlan = ({ page, setPage }) => {
               <span aria-hidden="true" className="toggle__button"></span>
             </div>
 
-            <label htmlFor="year">yearly</label>
+            <label
+              htmlFor="year"
+              className={`${option === 'monthly' ? 'fade' : ''}`}
+            >
+              Yearly
+            </label>
           </fieldset>
         </div>
       </div>

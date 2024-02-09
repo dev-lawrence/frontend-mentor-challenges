@@ -287,3 +287,53 @@ body {
 .step-two .plans .toggle__switch #year:checked ~ .toggle__button {
   left: 25px;
 }
+
+.fade {
+  color: var(--neutral-clr-150);
+}
+
+/* Step 3 */
+.add-ons .add-on--info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid var(--neutral-clr-350);
+  padding: 1.213rem 1rem;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+}
+.add-ons .add-on--info:nth-child(1),
+.add-ons .add-on--info:nth-child(2) {
+  margin-bottom: 1rem;
+}
+.add-ons .add-on--info__flex {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.add-ons .add-on--info:hover,
+.add-ons .add-on--info.active {
+  border-color: var(--accent-clr-350);
+  background-color: var(--neutral-clr-300);
+}
+.add-ons .add-on--info span {
+  color: var(--accent-clr-350);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+.add-ons .add-on input[type='checkbox'] {
+  width: 19px;
+  height: 19px;
+}
+.add-ons .add-on--text {
+  margin-left: 1.125rem;
+}
+.add-ons .add-on--text h4 {
+  color: var(--accent-clr-300);
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 0.3rem;
+}
+.add-ons .add-on--text p {
+  color: var(--neutral-clr-150);
+}
