@@ -5,8 +5,19 @@ import Header from './Header';
 import Footer from './Footer';
 import { useState } from 'react';
 
-const SelectPlan = ({ page, setPage, option, setOption }) => {
-  const [selectedIndex, setSelectedIndex] = useState();
+const SelectPlan = ({
+  page,
+  setPage,
+  option,
+  setOption,
+  pageData,
+  setPageData,
+}) => {
+  const [selectedIndex, setSelectedIndex] = useState(() => {
+    return pageData && pageData.selectPlan
+      ? pageData.selectPlan.selectedIndex
+      : undefined;
+  });
 
   const plans = [
     {
@@ -40,6 +51,11 @@ const SelectPlan = ({ page, setPage, option, setOption }) => {
 
   const handleSelectedOption = (selectedOption) => {
     setSelectedIndex(selectedOption);
+
+    setPageData((prevData) => ({
+      ...prevData,
+      selectPlan: { ...prevData.selectPlan, selectedIndex: selectedOption },
+    }));
   };
 
   return (

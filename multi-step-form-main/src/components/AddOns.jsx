@@ -2,16 +2,7 @@ import { useState } from 'react';
 import Footer from './Footer';
 import Header from './Header';
 
-const AddOns = ({ page, setPage, option }) => {
-  const [checkedItems, setCheckedItems] = useState([]);
-
-  const handleCheckboxChange = (index) => {
-    setCheckedItems((prevCheckedItems) => ({
-      ...prevCheckedItems,
-      [index]: !prevCheckedItems[index],
-    }));
-  };
-
+const AddOns = ({ page, setPage, option, pageData, setPageData }) => {
   const addOns = [
     {
       title: 'Online service',
@@ -35,6 +26,31 @@ const AddOns = ({ page, setPage, option }) => {
     },
   ];
 
+  const [checkedItems, setCheckedItems] = useState(() => {
+    if (pageData.addOns && pageData.addOns.checkedItems) {
+      return pageData.addOns.checkedItems;
+    } else {
+      return Array(addOns.length).fill(false);
+    }
+  });
+
+  const handleCheckboxChange = (index) => {
+    setCheckedItems((prevCheckedItems) => {
+      const newCheckedItems = [...prevCheckedItems];
+      newCheckedItems[index] = !newCheckedItems[index];
+
+      // Introduced a delay to ensure the state update occurs after rendering
+      setTimeout(() => {
+        setPageData((prevData) => ({
+          ...prevData,
+          addOns: { checkedItems: newCheckedItems },
+        }));
+      }, 0);
+
+      return newCheckedItems;
+    });
+  };
+
   return (
     <div className="form-step step-three">
       <Header page={page} />
@@ -51,7 +67,8 @@ const AddOns = ({ page, setPage, option }) => {
                 <input
                   type="checkbox"
                   name="service"
-                  checked={checkedItems[index]}
+                  checked={checkedItems[index] || false}
+                  onChange={() => handleCheckboxChange(index)}
                 />
                 <div className="add-on--text">
                   <h4>{addOn.title}</h4>

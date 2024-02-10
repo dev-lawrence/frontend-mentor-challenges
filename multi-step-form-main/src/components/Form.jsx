@@ -6,6 +6,7 @@ import AddOns from './AddOns';
 
 const Form = () => {
   const [page, setPage] = useState(0);
+  // const [errorMessage, setErrorMessage] = useState('');
   const [option, setOption] = useState('monthly');
   const [pageData, setPageData] = useState({
     personalInfo: {
@@ -23,6 +24,26 @@ const Form = () => {
       checkedItems: [],
     },
   });
+
+  // const validateInput = () => {
+  //   const { name, email, phone } = pageData.personalInfo;
+
+  //   if (!name || !email || !phone) {
+  //     setErrorMessage('This field is required');
+  //     return false;
+  //   }
+
+  //   return true;
+  // };
+
+  // const validatePlan = () => {
+  //   if (pageData.selectPlan.selectedIndex === undefined) {
+  //     console.log('yo');
+  //     return;
+  //   }
+
+  //   return true;
+  // };
 
   const pageDisplay = () => {
     if (page === 0) {
@@ -46,7 +67,15 @@ const Form = () => {
         />
       );
     } else if (page === 2) {
-      return <AddOns page={page} setPage={setPage} option={option} />;
+      return (
+        <AddOns
+          page={page}
+          setPage={setPage}
+          option={option}
+          pageData={pageData}
+          setPageData={setPageData}
+        />
+      );
     }
   };
 

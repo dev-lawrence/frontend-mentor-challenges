@@ -1,6 +1,10 @@
 import { progressData } from '../data/ProgressData';
 
 const Footer = ({ page, setPage }) => {
+  const nextPage = () => {
+    setPage((currentPage) => currentPage + 1);
+  };
+
   const lastStep = page === progressData.length - 1;
   return (
     <div className="buttons">
@@ -18,7 +22,7 @@ const Footer = ({ page, setPage }) => {
       <button
         className={`btn next-btn ${lastStep ? 'confirm' : ''}`}
         disabled={lastStep}
-        onClick={() => setPage((currentPage) => currentPage + 1)}
+        onClick={nextPage}
       >
         {lastStep ? 'Confirm' : 'Next Step'}
       </button>

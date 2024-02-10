@@ -11,12 +11,24 @@ const PersonalInfo = ({ page, setPage, pageData, setPageData }) => {
       },
     });
   };
+
+  //   const validateInput = () => {
+  //     const { name, email, phone } = pageData.personalInfo;
+
+  //     if (!name || !email || !phone) {
+  //       setErrorMessage('This field is required');
+  //       return false;
+  //     }
+
+  //     return true;
+  //   };
+
   return (
     <div className="form-step step-one">
       {/* Header */}
       <Header page={page} />
       <div className="input-group">
-        <div className="err-msg">This field is required</div>
+        <div className="err-msg">to be changed</div>
         <label htmlFor="name">Name</label>
         <br />
         <input
@@ -29,10 +41,11 @@ const PersonalInfo = ({ page, setPage, pageData, setPageData }) => {
       </div>
 
       <div className="input-group">
+        <div className="err-msg">to be changed</div>
         <label htmlFor="email">Email Address</label>
         <br />
         <input
-          type="text"
+          type="email"
           id="email"
           placeholder="e.g. stephenking@lorem.com"
           value={pageData.personalInfo.email}
@@ -41,6 +54,7 @@ const PersonalInfo = ({ page, setPage, pageData, setPageData }) => {
       </div>
 
       <div className="input-group">
+        <div className="err-msg">to be changed</div>
         <label htmlFor="phone">Phone Number</label>
         <br />
         <input
