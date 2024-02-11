@@ -4,18 +4,14 @@ import Pro from '../assets/images/icon-pro.svg';
 import Header from './Header';
 import Footer from './Footer';
 import { useState } from 'react';
+import { useFormContext } from '../FormContext';
 
-const SelectPlan = ({
-  page,
-  setPage,
-  option,
-  setOption,
-  pageData,
-  setPageData,
-}) => {
-  const [selectedIndex, setSelectedIndex] = useState(() => {
+const SelectPlan = ({ page, setPage, option, setOption }) => {
+  const { pageData, setPageData } = useFormContext();
+
+  const [selectedPlan, setSelectedPlan] = useState(() => {
     return pageData && pageData.selectPlan
-      ? pageData.selectPlan.selectedIndex
+      ? pageData.selectPlan.selectedPlan
       : undefined;
   });
 
@@ -49,12 +45,11 @@ const SelectPlan = ({
     setOption(selectedOption);
   };
 
-  const handleSelectedOption = (selectedOption) => {
-    setSelectedIndex(selectedOption);
-
+  const handleSelectedOption = (selectedPlan) => {
+    setSelectedPlan(selectedPlan);
     setPageData((prevData) => ({
       ...prevData,
-      selectPlan: { ...prevData.selectPlan, selectedIndex: selectedOption },
+      selectPlan: { ...prevData.selectPlan, option, selectedPlan },
     }));
   };
 
@@ -66,8 +61,10 @@ const SelectPlan = ({
           {plans.map((plan, index) => (
             <div
               key={index}
-              className={`plan ${selectedIndex === index ? 'active' : ''}`}
-              onClick={() => handleSelectedOption(index)}
+              className={`plan ${
+                selectedPlan.name === plan.name ? 'active' : ''
+              }`}
+              onClick={() => handleSelectedOption(plan)}
             >
               <img src={plan.img} alt="" />
               <div className="plan__info">

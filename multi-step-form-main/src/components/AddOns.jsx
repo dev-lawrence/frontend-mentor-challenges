@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import Footer from './Footer';
 import Header from './Header';
+import { useFormContext } from '../FormContext';
 
-const AddOns = ({ page, setPage, option, pageData, setPageData }) => {
+const AddOns = ({ page, setPage, option }) => {
   const addOns = [
     {
       title: 'Online service',
@@ -25,6 +26,8 @@ const AddOns = ({ page, setPage, option, pageData, setPageData }) => {
       yearlyPrice: 20,
     },
   ];
+
+  const { pageData, setPageData } = useFormContext();
 
   const [checkedItems, setCheckedItems] = useState(() => {
     if (pageData.addOns && pageData.addOns.checkedItems) {

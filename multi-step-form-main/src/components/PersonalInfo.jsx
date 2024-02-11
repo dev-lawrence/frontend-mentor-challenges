@@ -1,7 +1,10 @@
 import Header from './Header';
 import Footer from './Footer';
+import { useFormContext } from '../FormContext';
 
-const PersonalInfo = ({ page, setPage, pageData, setPageData }) => {
+const PersonalInfo = ({ page, setPage }) => {
+  const { pageData, setPageData } = useFormContext();
+
   const handlePersonalInfoChange = (field, event) => {
     setPageData({
       ...pageData,

@@ -12,7 +12,7 @@
   --neutral-clr-300: hsl(217, 100%, 97%);
   --neutral-clr-250: hsl(231, 100%, 99%);
   --neutral-clr-200: hsl(0, 0%, 100%);
-  --neutral-clr-150: hsl(0, 0%, 44%);
+  --neutral-clr-150: hsl(0, 0%, 50%);
 }
 
 *,
@@ -336,4 +336,67 @@ body {
 }
 .add-ons .add-on--text p {
   color: var(--neutral-clr-150);
+}
+
+/* Step 4 */
+.step-four .confirm-steps {
+  background-color: var(--neutral-clr-300);
+  padding: 1.2rem 1rem;
+  border-radius: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.step-four .flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.step-four .confirm-steps .confirm-plan {
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.step-four .confirm-steps .confirm-plan::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 1.5px;
+  background-color: #e6e6e6e6;
+  bottom: -0.7rem;
+}
+
+.step-four .confirm-steps .plan h4 {
+  text-transform: capitalize;
+}
+
+.step-four .confirm-steps .plan h4,
+.step-four .confirm-steps .confirm-plan span {
+  color: var(--accent-clr-300);
+  font-weight: 700;
+}
+
+.step-four .confirm-steps .confirm-addon:not(:last-child) {
+  margin-bottom: 1rem;
+}
+
+.step-four .confirm-steps .confirm-addon h4 {
+  color: var(--neutral-clr-150);
+  font-weight: 400;
+}
+
+.step-four .confirm-steps .confirm-addon span {
+  color: var(--accent-clr-300);
+  font-weight: 500;
+}
+
+.step-four .total h4 {
+  color: var(--neutral-clr-150);
+  font-weight: 400;
+}
+
+.step-four .total span {
+  color: var(--accent-clr-350);
+  font-weight: 700;
+  font-size: 1.1rem;
 }
