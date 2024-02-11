@@ -205,6 +205,12 @@ body {
   transition: all 0.2s ease;
 }
 
+.step-two .plans .flex {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
 .step-two .plans .plan:not(:last-child) {
   margin-bottom: 1rem;
 }

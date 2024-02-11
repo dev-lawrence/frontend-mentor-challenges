@@ -43,6 +43,11 @@ const SelectPlan = ({ page, setPage, option, setOption }) => {
 
   const handleToggleChange = (selectedOption) => {
     setOption(selectedOption);
+
+    setPageData((prevData) => ({
+      ...prevData,
+      selectPlan: { ...prevData.selectPlan, option: selectedOption },
+    }));
   };
 
   const handleSelectedOption = (selectedPlan) => {
@@ -58,6 +63,41 @@ const SelectPlan = ({ page, setPage, option, setOption }) => {
       <Header page={page} />
       <div className="plans">
         <div className="d-flex plan__flex">
+          {plans.map((plan, index) => (
+            <label
+              key={index}
+              className={`plan ${
+                selectedPlan.name === plan.name ? 'active' : ''
+              }`}
+            >
+              <input
+                type="radio"
+                name="planSelection"
+                checked={selectedPlan.name === plan.name}
+                onChange={() => handleSelectedOption(plan)}
+                style={{ display: 'none' }}
+              />
+              <div className="flex">
+                <img src={plan.img} alt="" />
+                <div className="plan__info">
+                  <h4>{plan.name}</h4>
+                  <span className="arcade-price">
+                    {option === 'monthly'
+                      ? `$${plan.monthlyPrice}/mo`
+                      : option === 'yearly'
+                      ? `$${plan.yearlyPrice}/yr`
+                      : ''}
+                  </span>
+                  <p className="trial">
+                    {option === 'yearly' ? plan.trial : ''}
+                  </p>
+                </div>
+              </div>
+            </label>
+          ))}
+        </div>
+
+        {/* <div className="d-flex plan__flex">
           {plans.map((plan, index) => (
             <div
               key={index}
@@ -80,7 +120,7 @@ const SelectPlan = ({ page, setPage, option, setOption }) => {
               </div>
             </div>
           ))}
-        </div>
+        </div> */}
 
         {/* price toggle switch  */}
         <div className="toggle__switch">
