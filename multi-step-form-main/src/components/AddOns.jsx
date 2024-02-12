@@ -29,22 +29,30 @@ const AddOns = ({ page, setPage, option }) => {
 
   const { pageData, setPageData } = useFormContext();
 
-  console.log(pageData);
-
   const [checkedItems, setCheckedItems] = useState(() => {
     if (pageData.addOns && pageData.addOns.checkedItems) {
       return pageData.addOns.checkedItems;
     } else {
-      return Array(addOns.length).fill(false);
+      return [];
     }
   });
 
-  const handleCheckboxChange = (index) => {
+  const handleCheckboxChange = (addOn) => {
     setCheckedItems((prevCheckedItems) => {
-      const newCheckedItems = [...prevCheckedItems];
-      newCheckedItems[index] = !newCheckedItems[index];
+      const isAlreadyChecked = prevCheckedItems.some(
+        (item) => item.title === addOn.title
+      );
 
-      // Introduced a delay to ensure the state update occurs after rendering
+      let newCheckedItems;
+
+      if (isAlreadyChecked) {
+        newCheckedItems = prevCheckedItems.filter(
+          (item) => item.title !== addOn.title
+        );
+      } else {
+        newCheckedItems = [...prevCheckedItems, addOn];
+      }
+
       setTimeout(() => {
         setPageData((prevData) => ({
           ...prevData,
@@ -65,14 +73,24 @@ const AddOns = ({ page, setPage, option }) => {
           {addOns.map((addOn, index) => (
             <label
               key={index}
-              className={`add-on--info ${checkedItems[index] ? 'active' : ''}`}
+              className={`add-on--info ${
+                checkedItems.some((item) => item.title === addOn.title)
+                  ? 'active'
+                  : ''
+              }`}
             >
               <div className="add-on--info__flex">
                 <input
                   type="checkbox"
                   name="service"
-                  checked={checkedItems[index] || false}
-                  onChange={() => handleCheckboxChange(index)}
+                  checked={
+                    (checkedItems &&
+                      checkedItems.some(
+                        (item) => item.title === addOn.title
+                      )) ||
+                    false
+                  }
+                  onChange={() => handleCheckboxChange(addOn)}
                 />
                 <div className="add-on--text">
                   <h4>{addOn.title}</h4>

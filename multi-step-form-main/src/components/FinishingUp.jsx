@@ -5,11 +5,62 @@ import Header from './Header';
 const FinishingUp = ({ page, setPage, option }) => {
   const { pageData } = useFormContext();
 
+  const addOns = [
+    {
+      title: 'Online service',
+      monthlyPrice: 1,
+      yearlyPrice: 10,
+    },
+
+    {
+      title: 'Larger storage',
+      monthlyPrice: 2,
+      yearlyPrice: 20,
+    },
+
+    {
+      title: 'Customizable Profile',
+      monthlyPrice: 2,
+      yearlyPrice: 20,
+    },
+  ];
+
+  const addOn = addOns.map((addOn) => {
+    return addOn.title;
+  });
+
   const goToPageTwo = () => {
     if (page === 3) {
       setPage((currentPage) => currentPage - 2);
     }
   };
+
+  // Extract selected add-on titles
+  const selectedAddOnTitles = addOns.map((item) => item.title);
+
+  // price of  plan plus the price of addOns
+  const planPrice =
+    pageData.selectPlan.option === 'monthly'
+      ? pageData.selectPlan.selectedPlan.monthlyPrice
+      : pageData.selectPlan.option === 'yearly'
+      ? pageData.selectPlan.selectedPlan.yearlyPrice
+      : '';
+
+  const addOnPrice = pageData.addOns.checkedItems.map((item) =>
+    option === 'monthly'
+      ? item.monthlyPrice
+      : option === 'yearly'
+      ? item.yearlyPrice
+      : ''
+  );
+
+  const totalAddOnPrice = addOnPrice.reduce(
+    (accumulator, currentValue) => accumulator + currentValue,
+    0
+  );
+
+  // Total price
+  const totalPrice = planPrice + totalAddOnPrice;
 
   return (
     <div className="form-step step-four">
@@ -29,41 +80,48 @@ const FinishingUp = ({ page, setPage, option }) => {
               ? `$${pageData.selectPlan.selectedPlan.monthlyPrice}/mo`
               : pageData.selectPlan.option === 'yearly'
               ? `$${pageData.selectPlan.selectedPlan.yearlyPrice}/yr`
-              : '$9/mo'}
+              : ''}
           </span>
         </div>
 
-        <div className="flex confirm-addon">
-          <div className="addon">
-            <h4>Online service</h4>
+        {pageData.addOns.checkedItems.map((item, index) => (
+          <div key={index} className="confirm-addon">
+            {selectedAddOnTitles.includes(item.title) && (
+              <div className="flex">
+                <h4>{item.title}</h4>
+
+                <span key={index}>
+                  {option === 'monthly'
+                    ? `$${item.monthlyPrice}/mo`
+                    : option === 'yearly'
+                    ? `$${item.yearlyPrice}/yr`
+                    : ''}
+                </span>
+              </div>
+            )}
           </div>
-
-          <span>+$1/mo</span>
-        </div>
-
-        <div className="flex confirm-addon">
-          <div className="addon">
-            <h4>Larger storage</h4>
-          </div>
-
-          <span>+$2/mo</span>
-        </div>
-
-        <div className="flex confirm-addon">
-          <div className="addon">
-            <h4>Customizable profile</h4>
-          </div>
-
-          <span>+$2/mo</span>
-        </div>
+        ))}
       </div>
 
       <div className="flex total">
         <div className="total-price">
-          <h4>Total (per month)</h4>
+          <h4>
+            {' '}
+            {option === 'monthly'
+              ? `Total (per month) `
+              : option === 'yearly'
+              ? `Total(per year)`
+              : ''}
+          </h4>
         </div>
 
-        <span>+$12/mo</span>
+        <span>
+          {option === 'monthly'
+            ? `+$${totalPrice}/mo`
+            : option === 'yearly'
+            ? `+$${totalPrice}/yr`
+            : ''}
+        </span>
       </div>
 
       <Footer page={page} setPage={setPage} />
