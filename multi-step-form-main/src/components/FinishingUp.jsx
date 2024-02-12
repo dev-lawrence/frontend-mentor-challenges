@@ -25,10 +25,6 @@ const FinishingUp = ({ page, setPage, option }) => {
     },
   ];
 
-  const addOn = addOns.map((addOn) => {
-    return addOn.title;
-  });
-
   const goToPageTwo = () => {
     if (page === 3) {
       setPage((currentPage) => currentPage - 2);

@@ -4,13 +4,19 @@ import PersonalInfo from './PersonalInfo';
 import SelectPlan from './SelectPlan';
 import AddOns from './AddOns';
 import FinishingUp from './FinishingUp';
+import ThankYou from './ThankYou';
+import { useFormContext } from '../FormContext';
 
 const Form = () => {
   const [page, setPage] = useState(0);
+  const { formSubmitted } = useFormContext();
   // const [errorMessage, setErrorMessage] = useState('');
   const [option, setOption] = useState('monthly');
+
   const pageDisplay = () => {
-    if (page === 0) {
+    if (formSubmitted) {
+      return <ThankYou />;
+    } else if (page === 0) {
       return <PersonalInfo page={page} setPage={setPage} />;
     } else if (page === 1) {
       return (

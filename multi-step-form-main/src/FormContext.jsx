@@ -1,4 +1,5 @@
 import { createContext, useContext, useState } from 'react';
+import { progressData } from './data/ProgressData';
 
 const FormContext = createContext();
 
@@ -19,9 +20,12 @@ export const FormProvider = ({ children }) => {
       checkedItems: [],
     },
   });
+  const [formSubmitted, setFormSubmitted] = useState(false);
 
   return (
-    <FormContext.Provider value={{ pageData, setPageData }}>
+    <FormContext.Provider
+      value={{ pageData, setPageData, formSubmitted, setFormSubmitted }}
+    >
       {children}
     </FormContext.Provider>
   );
