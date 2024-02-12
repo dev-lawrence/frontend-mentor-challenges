@@ -5,7 +5,11 @@ import Header from './Header';
 const FinishingUp = ({ page, setPage, option }) => {
   const { pageData } = useFormContext();
 
-  console.log(pageData);
+  const goToPageTwo = () => {
+    if (page === 3) {
+      setPage((currentPage) => currentPage - 2);
+    }
+  };
 
   return (
     <div className="form-step step-four">
@@ -15,15 +19,17 @@ const FinishingUp = ({ page, setPage, option }) => {
         <div className="flex confirm-plan">
           <div className="plan">
             <h4>Arcade ({option})</h4>
-            <a href="#">Change</a>
+            <button className="change" href="#" onClick={() => goToPageTwo()}>
+              Change
+            </button>
           </div>
 
-          <span>
+          <span className="plan-price">
             {pageData.selectPlan.option === 'monthly'
               ? `$${pageData.selectPlan.selectedPlan.monthlyPrice}/mo`
               : pageData.selectPlan.option === 'yearly'
               ? `$${pageData.selectPlan.selectedPlan.yearlyPrice}/yr`
-              : ''}
+              : '$9/mo'}
           </span>
         </div>
 
@@ -38,6 +44,14 @@ const FinishingUp = ({ page, setPage, option }) => {
         <div className="flex confirm-addon">
           <div className="addon">
             <h4>Larger storage</h4>
+          </div>
+
+          <span>+$2/mo</span>
+        </div>
+
+        <div className="flex confirm-addon">
+          <div className="addon">
+            <h4>Customizable profile</h4>
           </div>
 
           <span>+$2/mo</span>

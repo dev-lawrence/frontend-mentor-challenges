@@ -377,7 +377,7 @@ body {
 }
 
 .step-four .confirm-steps .plan h4,
-.step-four .confirm-steps .confirm-plan span {
+.step-four .confirm-steps .confirm-plan .plan-price {
   color: var(--accent-clr-300);
   font-weight: 700;
 }
@@ -389,6 +389,18 @@ body {
 .step-four .confirm-steps .confirm-addon h4 {
   color: var(--neutral-clr-150);
   font-weight: 400;
+}
+
+.step-four .change {
+  color: var(--neutral-clr-150);
+  font-weight: 400;
+  margin-top: 0.3rem;
+  text-decoration: underline;
+  cursor: pointer;
+  border: 0;
+  font-family: inherit;
+  font-size: 1rem;
+  background-color: transparent;
 }
 
 .step-four .confirm-steps .confirm-addon span {

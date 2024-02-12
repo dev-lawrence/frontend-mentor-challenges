@@ -29,6 +29,8 @@ const AddOns = ({ page, setPage, option }) => {
 
   const { pageData, setPageData } = useFormContext();
 
+  console.log(pageData);
+
   const [checkedItems, setCheckedItems] = useState(() => {
     if (pageData.addOns && pageData.addOns.checkedItems) {
       return pageData.addOns.checkedItems;
@@ -61,10 +63,9 @@ const AddOns = ({ page, setPage, option }) => {
       <div className="add-ons">
         <div className="add-on">
           {addOns.map((addOn, index) => (
-            <div
+            <label
               key={index}
               className={`add-on--info ${checkedItems[index] ? 'active' : ''}`}
-              onClick={() => handleCheckboxChange(index)}
             >
               <div className="add-on--info__flex">
                 <input
@@ -95,7 +96,43 @@ const AddOns = ({ page, setPage, option }) => {
                     : ''}
                 </span>
               </div>
-            </div>
+            </label>
+
+            // <div
+            //   key={index}
+            //   className={`add-on--info ${checkedItems[index] ? 'active' : ''}`}
+            //   onClick={() => handleCheckboxChange(index)}
+            // >
+            //   <div className="add-on--info__flex">
+            //     <input
+            //       type="checkbox"
+            //       name="service"
+            //       checked={checkedItems[index] || false}
+            //       onChange={() => handleCheckboxChange(index)}
+            //     />
+            //     <div className="add-on--text">
+            //       <h4>{addOn.title}</h4>
+            //       <p>{addOn.text}</p>
+            //     </div>
+            //   </div>
+
+            //   <div className="price">
+            //     <span>
+            //       +$
+            //       {option === 'monthly'
+            //         ? addOn.monthlyPrice
+            //         : option === 'yearly'
+            //         ? addOn.yearlyPrice
+            //         : ''}
+            //       /
+            //       {option === 'monthly'
+            //         ? 'mo'
+            //         : option === 'yearly'
+            //         ? 'yr'
+            //         : ''}
+            //     </span>
+            //   </div>
+            // </div>
           ))}
         </div>
       </div>
