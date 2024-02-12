@@ -2,7 +2,12 @@ import { progressData } from '../data/ProgressData';
 import { useFormContext } from '../FormContext';
 
 const Footer = ({ page, setPage }) => {
-  const { setFormSubmitted } = useFormContext();
+  const {
+    setFormSubmitted,
+    validatePersonalInfo,
+    validateSelectPlan,
+    validateAddOn,
+  } = useFormContext();
   const nextPage = () => {
     setPage((currentPage) => currentPage + 1);
   };
@@ -11,11 +16,21 @@ const Footer = ({ page, setPage }) => {
 
   const handleButtonClick = () => {
     if (lastPage) {
-      console.log('last page');
       setFormSubmitted(true);
+    } else if (page === 0) {
+      if (validatePersonalInfo()) {
+        nextPage();
+      }
+    } else if (page === 1) {
+      if (validateSelectPlan()) {
+        nextPage();
+      }
+    } else if (page === 2) {
+      if (validateAddOn()) {
+        nextPage();
+      }
     } else {
       nextPage();
-      console.log('next page');
     }
   };
   return (
@@ -30,17 +45,6 @@ const Footer = ({ page, setPage }) => {
       )}
 
       <div></div>
-      {/* 
-      {formSubmitted ? (
-        <ThankYou />
-      ) : (
-        <button
-          className={`btn next-btn ${lastPage ? 'confirm' : ''}`}
-          onClick={handleButtonClick}
-        >
-          {lastPage ? 'Confirm' : 'Next Step'}
-        </button>
-      )} */}
 
       <button
         className={`btn next-btn ${lastPage ? 'confirm' : ''}`}

@@ -3,7 +3,7 @@ import Footer from './Footer';
 import { useFormContext } from '../FormContext';
 
 const PersonalInfo = ({ page, setPage }) => {
-  const { pageData, setPageData } = useFormContext();
+  const { pageData, setPageData, errorMessagePersonalInfo } = useFormContext();
 
   const handlePersonalInfoChange = (field, event) => {
     setPageData({
@@ -15,23 +15,12 @@ const PersonalInfo = ({ page, setPage }) => {
     });
   };
 
-  //   const validateInput = () => {
-  //     const { name, email, phone } = pageData.personalInfo;
-
-  //     if (!name || !email || !phone) {
-  //       setErrorMessage('This field is required');
-  //       return false;
-  //     }
-
-  //     return true;
-  //   };
-
   return (
     <div className="form-step step-one">
       {/* Header */}
       <Header page={page} />
       <div className="input-group">
-        <div className="err-msg">to be changed</div>
+        <div className="err-msg">{errorMessagePersonalInfo}</div>
         <label htmlFor="name">Name</label>
         <br />
         <input
@@ -44,7 +33,7 @@ const PersonalInfo = ({ page, setPage }) => {
       </div>
 
       <div className="input-group">
-        <div className="err-msg">to be changed</div>
+        <div className="err-msg">{errorMessagePersonalInfo}</div>
         <label htmlFor="email">Email Address</label>
         <br />
         <input
@@ -57,7 +46,7 @@ const PersonalInfo = ({ page, setPage }) => {
       </div>
 
       <div className="input-group">
-        <div className="err-msg">to be changed</div>
+        <div className="err-msg">{errorMessagePersonalInfo}</div>
         <label htmlFor="phone">Phone Number</label>
         <br />
         <input

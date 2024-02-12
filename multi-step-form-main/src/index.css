@@ -82,8 +82,10 @@ body {
   justify-content: space-between;
 }
 
-.next {
-  justify-content: flex-end;
+.err-msg {
+  color: var(--accent-clr-400);
+  font-weight: 500;
+  margin-bottom: 0.5rem;
 }
 
 /* Progress Bar */
@@ -189,9 +191,9 @@ body {
 .step-one .err-msg {
   position: absolute;
   right: 0;
-  color: var(--accent-clr-400);
   font-weight: 500;
   font-size: 0.9rem;
+  margin-bottom: 0;
 }
 
 /* Step two */

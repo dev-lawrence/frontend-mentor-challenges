@@ -7,7 +7,7 @@ import { useState } from 'react';
 import { useFormContext } from '../FormContext';
 
 const SelectPlan = ({ page, setPage, option, setOption }) => {
-  const { pageData, setPageData } = useFormContext();
+  const { pageData, setPageData, errorMessageSelectPlan } = useFormContext();
 
   const [selectedPlan, setSelectedPlan] = useState(() => {
     return pageData && pageData.selectPlan
@@ -62,6 +62,7 @@ const SelectPlan = ({ page, setPage, option, setOption }) => {
     <div className="form-step step-two">
       <Header page={page} />
       <div className="plans">
+        <p className="err-msg">{errorMessageSelectPlan}</p>
         <div className="d-flex plan__flex">
           {plans.map((plan, index) => (
             <label

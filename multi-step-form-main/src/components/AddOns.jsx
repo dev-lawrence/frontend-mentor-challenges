@@ -27,7 +27,7 @@ const AddOns = ({ page, setPage, option }) => {
     },
   ];
 
-  const { pageData, setPageData } = useFormContext();
+  const { pageData, setPageData,  errorMessageAddOn } = useFormContext();
 
   const [checkedItems, setCheckedItems] = useState(() => {
     if (pageData.addOns && pageData.addOns.checkedItems) {
@@ -69,6 +69,7 @@ const AddOns = ({ page, setPage, option }) => {
       <Header page={page} />
 
       <div className="add-ons">
+        <p className="err-msg">{ errorMessageAddOn}</p>
         <div className="add-on">
           {addOns.map((addOn, index) => (
             <label

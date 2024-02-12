@@ -10,13 +10,10 @@ import { useFormContext } from '../FormContext';
 const Form = () => {
   const [page, setPage] = useState(0);
   const { formSubmitted } = useFormContext();
-  // const [errorMessage, setErrorMessage] = useState('');
   const [option, setOption] = useState('monthly');
 
   const pageDisplay = () => {
-    if (formSubmitted) {
-      return <ThankYou />;
-    } else if (page === 0) {
+    if (page === 0) {
       return <PersonalInfo page={page} setPage={setPage} />;
     } else if (page === 1) {
       return (
@@ -31,6 +28,8 @@ const Form = () => {
       return <AddOns page={page} setPage={setPage} option={option} />;
     } else if (page === 3) {
       return <FinishingUp page={page} setPage={setPage} option={option} />;
+    } else if (formSubmitted) {
+      return <ThankYou />;
     }
   };
 
