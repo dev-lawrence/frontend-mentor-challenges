@@ -8,6 +8,13 @@ const Footer = ({ page, setPage }) => {
     validateSelectPlan,
     validateAddOn,
   } = useFormContext();
+
+  const validationFunctions = [
+    validatePersonalInfo,
+    validateSelectPlan,
+    validateAddOn,
+  ];
+
   const nextPage = () => {
     setPage((currentPage) => currentPage + 1);
   };
@@ -17,22 +24,14 @@ const Footer = ({ page, setPage }) => {
   const handleButtonClick = () => {
     if (lastPage) {
       setFormSubmitted(true);
-    } else if (page === 0) {
-      if (validatePersonalInfo()) {
-        nextPage();
-      }
-    } else if (page === 1) {
-      if (validateSelectPlan()) {
-        nextPage();
-      }
-    } else if (page === 2) {
-      if (validateAddOn()) {
-        nextPage();
-      }
     } else {
-      nextPage();
+      const validationFunction = validationFunctions[page];
+      if (!validationFunction || validationFunction()) {
+        nextPage();
+      }
     }
   };
+
   return (
     <div className="buttons">
       {page !== 0 && (
