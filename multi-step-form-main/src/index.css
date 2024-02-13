@@ -43,8 +43,11 @@ body {
   background-color: var(--neutral-clr-300);
 }
 
-/* Buttons */
+.form {
+  padding-inline: 1rem;
+}
 
+/* Buttons */
 .btn {
   padding: 0.8rem 1.5rem;
   cursor: pointer;
@@ -395,7 +398,7 @@ body {
 
 .step-four .change {
   color: var(--neutral-clr-150);
-  font-weight: 400;
+  font-weight: 500;
   margin-top: 0.3rem;
   text-decoration: underline;
   cursor: pointer;
@@ -403,6 +406,10 @@ body {
   font-family: inherit;
   font-size: 1rem;
   background-color: transparent;
+}
+
+.step-four .change:hover {
+  color: var(--accent-clr-350);
 }
 
 .step-four .confirm-steps .confirm-addon span {
@@ -439,4 +446,115 @@ body {
 .thank-you p {
   line-height: 1.4;
   color: var(--neutral-clr-150);
+}
+
+/* Media query */
+@media (min-width: 75rem) {
+  .container {
+    width: 900px;
+    margin-inline: auto;
+    padding: 1.5rem;
+    background-color: var(--neutral-clr-200);
+    border-radius: 0.7rem;
+  }
+
+  .form {
+    padding-inline: 0;
+  }
+
+  .form-container {
+    display: grid;
+    place-items: center;
+    height: 100vh;
+  }
+
+  .d-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    column-gap: 6rem;
+    height: 100%;
+  }
+
+  .form-step {
+    max-width: 100%;
+    background-color: transparent;
+    border-radius: 0;
+    padding: 0;
+    margin: 0;
+    margin-top: 2rem;
+    padding-right: 3rem;
+  }
+
+  .progressbar {
+    background-image: url(../src/assets/images/bg-sidebar-desktop.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    height: 100%;
+    border-radius: 0.7rem;
+    width: 250px;
+    height: 500px;
+  }
+
+  .progressbar__steps {
+    display: block;
+  }
+
+  .progressbar__step-info ol {
+    margin: 0;
+  }
+
+  .progressbar__step-text {
+    display: block;
+    color: var(--neutral-clr-200);
+    margin-left: 1rem;
+    text-align: left;
+  }
+  .progressbar__step-text span {
+    text-transform: uppercase;
+    font-weight: lighter;
+    font-size: 0.8rem;
+  }
+  .progressbar__step-text h5 {
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 1rem;
+  }
+
+  .progressbar__step-info {
+    width: 100%;
+    display: flex;
+    margin-bottom: 2rem;
+  }
+
+  /* Step two */
+  .step-two .plans .flex {
+    display: block;
+    width: 100%;
+  }
+
+  .step-two .d-flex {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 1rem;
+  }
+
+  .step-two .plans .plan:not(:last-child) {
+    margin-bottom: 0;
+  }
+
+  .step-two .plans .plan img {
+    margin-right: 0;
+    margin-bottom: 2rem;
+  }
+
+  .thank-you {
+    width: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80%;
+    margin-inline: auto;
+    padding-right: 2rem;
+  }
 }

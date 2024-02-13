@@ -30,9 +30,9 @@ export const FormProvider = ({ children }) => {
     if (!name || !email || !phone) {
       setErrorMessagePersonalInfo('This field is required');
       return false;
+    } else {
+      setErrorMessagePersonalInfo('');
     }
-
-    setErrorMessagePersonalInfo('');
 
     return true;
   };

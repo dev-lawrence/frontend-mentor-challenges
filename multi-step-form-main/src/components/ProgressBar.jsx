@@ -1,6 +1,33 @@
+import { useFormContext } from '../FormContext';
 import { progressData } from '../data/ProgressData';
 
 const ProgressBar = ({ page, setPage }) => {
+  const handleStepClick = async (index) => {
+    let isValid = false;
+
+    // Validate based on the current step index
+    switch (index) {
+      case 0:
+        isValid;
+        break;
+      case 1:
+        isValid;
+
+        break;
+      case 2:
+        isValid;
+        break;
+      case 3:
+        isValid;
+        break;
+      default:
+        isValid = true;
+    }
+
+    if (isValid) {
+      setPage(index);
+    }
+  };
   return (
     <div className="progressbar">
       <div className="progressbar__steps">
@@ -8,7 +35,7 @@ const ProgressBar = ({ page, setPage }) => {
           <div
             key={index}
             className="progressbar__step-info"
-            onClick={() => setPage(index)}
+            onClick={() => handleStepClick(index)}
           >
             <ol className={`${page === index ? 'active' : ''}`}>
               {progress.step}

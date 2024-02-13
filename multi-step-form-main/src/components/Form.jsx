@@ -13,7 +13,9 @@ const Form = () => {
   const [option, setOption] = useState('monthly');
 
   const pageDisplay = () => {
-    if (page === 0) {
+    if (formSubmitted) {
+      return <ThankYou />;
+    } else if (page === 0) {
       return <PersonalInfo page={page} setPage={setPage} />;
     } else if (page === 1) {
       return (
@@ -28,18 +30,20 @@ const Form = () => {
       return <AddOns page={page} setPage={setPage} option={option} />;
     } else if (page === 3) {
       return <FinishingUp page={page} setPage={setPage} option={option} />;
-    } else if (formSubmitted) {
-      return <ThankYou />;
     }
   };
 
   return (
-    <div className="panel">
-      {/* Progress bar */}
-      <ProgressBar page={page} setPage={setPage} />
+    <div className="form-container">
+      <div className="container">
+        <div className="d-grid">
+          {/* Progress bar */}
+          <ProgressBar page={page} setPage={setPage} />
 
-      {/* Body (details of each step) */}
-      <div className="form-container">{pageDisplay()}</div>
+          {/* Body (details of each step) */}
+          <div className="form">{pageDisplay()}</div>
+        </div>
+      </div>
     </div>
   );
 };

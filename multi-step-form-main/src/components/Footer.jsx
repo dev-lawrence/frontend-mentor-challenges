@@ -32,6 +32,25 @@ const Footer = ({ page, setPage }) => {
     }
   };
 
+  //   const handleButtonClick = () => {
+  //     if (lastPage) {
+  //       setFormSubmitted(true);
+  //     } else if (page === 0) {
+  //       if (validatePersonalInfo()) {
+  //         nextPage();
+  //       }
+  //     } else if (page === 1) {
+  //       if (validateSelectPlan()) {
+  //         nextPage();
+  //       }
+  //     } else if (page === 2) {
+  //       if (validateAddOn()) {
+  //         nextPage();
+  //       }
+  //     } else {
+  //       nextPage();
+  //     }
+  //   };
   return (
     <div className="buttons">
       {page !== 0 && (
